@@ -1,3 +1,30 @@
-body {
+* {
+  box-sizing: border-box;
+}
+.flexcontainer {
+   display: -webkit-flex;
+   display: flex;
+}
+.header {
   text-align: center;
 }
+
+.bigitem {
+   /* This will be twice as big as the small item. */
+   -webkit-flex: 2 0 0; 
+   flex: 2 0 0;
+   margin-left: 10%; 
+   margin-right: 2%;
+}
+.smallitem {
+   -webkit-flex: 1 0 0;
+   flex: 1 0 0;
+   margin-right: 10%;
+}
+
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
+}
+

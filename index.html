@@ -4,20 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="main.css">
-  <title>Cal Count Mach 1</title>
+  <title>GAINZ</title>
 </head>
 <body>
-  <h1>Who's Hungry, Search for something Delecious!</h1>
+  <header class="header">
+  <h1>Time for GAINZ, Search the food database</h1>
+  <p>Be as specific as possible to maximize results</p>
  <form action="#" class="js-search-form">
     <label for="query"></label>
     <input type="text" class="js-query">
     <button type="submit">Search</button>
   </form>
-  
-  <div class="js-search-results">
-    
+  </header>
+
+  <div class="flexcontainer">
+    <div class="js-search-results bigitem"></div>
+    <div class="js-todays-meals smallitem"></div>
   </div>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="app.js"></script>
 </body>
