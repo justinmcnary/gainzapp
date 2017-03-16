@@ -15,19 +15,21 @@ function getFoodFromApi(query){
 
 };
 
-const addItem = function(state, item) {
-  console.log(item);
-  state.storedItems.push(item);
+const addItem = function(state, item, cal) {
+  let itemObj = {item, cal};
+  state.storedItems.push(itemObj);
+  // console.log(item);
+  // console.log(state.searchItems);
   console.log(state.storedItems);
+
   // let itemObj;
   // state.searchItems.map(function(sItem) {
   //   let searchItemName = `${sItem.fields.brand_name} ${sItem.fields.item_name}`;
-  //   console.log(searchItemName);
   //   if(searchItemName === item){
   //     itemObj = sItem;
   //   }
   //   console.log(itemObj);
-  // })
+  // });
   // state.storedItems.push(itemObj);
 }
 
@@ -41,7 +43,7 @@ const displayTodaysMenu = function() {
   state.storedItems.map(function(item) {
   $('.js-todays-meals').append(
     `<div class= "mealBar">
-     <p class="mealName">${item}</p>
+     <p class="mealName">${item.item}${item.cal}</p>
      <button class= "delete"> Delete </button>
      </div>`)
   });
@@ -53,8 +55,8 @@ const displayResults = function() {
   let items = item.fields;
   $('.js-search-results').append(
     `<div class= "itemBar">
-     <h2 class= "title"> ${items.brand_name} ${items.item_name} </h2>
-     <p> Calories: ${items.nf_calories} </p>
+     <h2 class= "title"> ${items.brand_name} ${items.item_name}</h2>
+     <p class= "calories"> Calories: ${items.nf_calories} </p>
      <p> Serving Size: ${items.nf_serving_size_qty} ${items.nf_serving_size_unit} </p>
      <p> Total Fat: ${items.nf_total_fat} </p>
      <button class= "select"> Select </button>
@@ -71,7 +73,9 @@ function watchSubmit() {
 }
 
 $('.flexcontainer').on('click','.select', function(){
-  addItem(state, $(this).closest('div').find('.title').text());
+  addItem(state, 
+  $(this).closest('div').find('.title').text(),
+  $(this).closest('div').find('.calories').text());
   displayTodaysMenu();
 });
 
