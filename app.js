@@ -16,12 +16,23 @@ function getFoodFromApi(query){
 };
 
 const addItem = function(state, item) {
-  console.log(state);
+  console.log(item);
   state.storedItems.push(item);
+  console.log(state.storedItems);
+  // let itemObj;
+  // state.searchItems.map(function(sItem) {
+  //   let searchItemName = `${sItem.fields.brand_name} ${sItem.fields.item_name}`;
+  //   console.log(searchItemName);
+  //   if(searchItemName === item){
+  //     itemObj = sItem;
+  //   }
+  //   console.log(itemObj);
+  // })
+  // state.storedItems.push(itemObj);
 }
 
+
 const removeItem = function(item) {
-  console.log(state.storedItems.indexOf(item));
   state.storedItems.splice(state.storedItems.indexOf(item), 1);
 }
 
@@ -30,7 +41,7 @@ const displayTodaysMenu = function() {
   state.storedItems.map(function(item) {
   $('.js-todays-meals').append(
     `<div class= "mealBar">
-     <p>${item}</p>
+     <p class="mealName">${item}</p>
      <button class= "delete"> Delete </button>
      </div>`)
   });
@@ -42,7 +53,7 @@ const displayResults = function() {
   let items = item.fields;
   $('.js-search-results').append(
     `<div class= "itemBar">
-     <h2> ${items.brand_name} ${items.item_name} </h2>
+     <h2 class= "title"> ${items.brand_name} ${items.item_name} </h2>
      <p> Calories: ${items.nf_calories} </p>
      <p> Serving Size: ${items.nf_serving_size_qty} ${items.nf_serving_size_unit} </p>
      <p> Total Fat: ${items.nf_total_fat} </p>
@@ -50,7 +61,6 @@ const displayResults = function() {
      </div>`)
   });
 }
-
 
 function watchSubmit() {
   $('.js-search-form').submit(function(e) {
@@ -61,12 +71,12 @@ function watchSubmit() {
 }
 
 $('.flexcontainer').on('click','.select', function(){
-  addItem(state, $(this).closest('.itemBar').text());
+  addItem(state, $(this).closest('div').find('.title').text());
   displayTodaysMenu();
 });
 
 $('div').on('click', 'button.delete', function(event){
-  removeItem($(this).closest('div').text());
+  removeItem($(this).closest('div').find('.mealName').text());
   displayTodaysMenu();
 });
 
