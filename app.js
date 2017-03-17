@@ -2,6 +2,10 @@ const appID = '5ff9d9d1';
 const appKey = '8a580ee40ddee9e24cc9c02664aced07';
 
 const state = {
+  weight: 0,
+  lbm: 0,
+  age: 0,
+  calorieGoal: 2000,
   searchItems: [],
   storedItems: []
 }
@@ -15,35 +19,40 @@ function getFoodFromApi(query){
 
 };
 
-const addItem = function(state, item, cal) {
-  let itemObj = {item, cal};
+const addItem = function(state, itemName, cal) {
+  let itemObj = {itemName, cal};
   state.storedItems.push(itemObj);
-  // console.log(item);
-  // console.log(state.searchItems);
-  console.log(state.storedItems);
-
-  // let itemObj;
-  // state.searchItems.map(function(sItem) {
-  //   let searchItemName = `${sItem.fields.brand_name} ${sItem.fields.item_name}`;
-  //   if(searchItemName === item){
-  //     itemObj = sItem;
-  //   }
-  //   console.log(itemObj);
-  // });
-  // state.storedItems.push(itemObj);
+  // console.log(state);
 }
 
-
-const removeItem = function(item) {
-  state.storedItems.splice(state.storedItems.indexOf(item), 1);
+const removeItem = function(state, iRemoving) {
+  //state.storeditems loop
+  // string.trim()
+  //string.toLowerCase()
+  //if items.name === item
+  //return item
+  let normalizeRemoving = iRemoving.trim().toLowerCase();
+  state.storedItems.map(function(item, i){
+    let normalizeName = item.itemName.trim().toLowerCase();
+    if(normalizeName === normalizeRemoving){
+      state.storedItems.splice(i, 1);
+    }
+  })
 }
+
+const userInputs = function(weight, lbm) {
+  state.weight = weight;
+  state.lbm = lbm;
+}
+
 
 const displayTodaysMenu = function() {
   $('.js-todays-meals').html("");
   state.storedItems.map(function(item) {
   $('.js-todays-meals').append(
     `<div class= "mealBar">
-     <p class="mealName">${item.item}${item.cal}</p>
+     <p class"iName">${item.itemName}</p>
+     <p class"iCal">${item.cal}</p>
      <button class= "delete"> Delete </button>
      </div>`)
   });
@@ -71,6 +80,12 @@ function watchSubmit() {
     getFoodFromApi(query);
   });
 }
+  $('.setup').submit(function(e) {
+    e.preventDefault;
+    let weight = $(this).find('.weight').val();
+    let lbm = $('.lbm').val();
+    userInputs(weight, lbm);
+  });
 
 $('.flexcontainer').on('click','.select', function(){
   addItem(state, 
@@ -79,9 +94,14 @@ $('.flexcontainer').on('click','.select', function(){
   displayTodaysMenu();
 });
 
-$('div').on('click', 'button.delete', function(event){
-  removeItem($(this).closest('div').find('.mealName').text());
+$('.flexcontainer').on('click', 'button.delete', function(event){
+  removeItem(state, $(this).closest('div').children().eq(0).text());
   displayTodaysMenu();
+});
+
+$('.startpage').on('click', 'button.next', function(event){
+  $('header').removeClass('hidden');
+  $('.startpage').addClass('hidden');
 });
 
 watchSubmit();
