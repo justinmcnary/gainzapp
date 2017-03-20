@@ -55,7 +55,7 @@ const removeCal = function(state, calCount) {
   state.todaysCalIntake.map(function(item, i){
     console.log(calCount);
     console.log(item);
-    if (item == calCount) {
+    if (item === calCount) {
       console.log("matched cal count", calCount);
       state.todaysCalIntake.splice(i,1);
     }
@@ -148,7 +148,7 @@ $('.flexcontainer').on('click', 'button.delete', function(event){
   removeItem(state, $(this).closest('div').children().eq(0).text());
   let calDelete = $(this).closest('div').children().eq(1).text();
   let numCal = calDelete.replace( /[^0-9.]/g, '' );
-  removeCal(state, numCal);
+  removeCal(state, +numCal);
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
