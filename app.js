@@ -7,6 +7,8 @@ const state = {
   calCountSustain: 2000,
   calCountGain: 2000,
   calCountLose: 2000,
+  todaysCalIntakeTotal: 0,
+  todaysCalIntake: [],
   searchItems: [],
   storedItems: []
 }
@@ -23,6 +25,13 @@ function getFoodFromApi(query){
 const addItem = function(state, itemName, cal) {
   let itemObj = {itemName, cal};
   state.storedItems.push(itemObj);
+  let numCal = cal.replace ( /[^0-9.]/g, '' );
+  state.todaysCalIntake.push(+numCal);
+  state.todaysCalIntakeTotal = state.todaysCalIntake.reduce(add, 0);
+  function add (a,b) {
+    return a + b;
+  }
+  console.log(state.todaysCalIntakeTotal);
 }
 
 const removeItem = function(state, iRemoving) {
@@ -52,12 +61,19 @@ const userInputs = function(weight, sex) {
 }
 
 const displayUserCal = function() {
+  $('.js-user').html("");
   $('.js-user').append(
     `<div class= 'userStats'>
     <p>Suggested Calorie intake to Sustain Weight: ${state.calCountSustain}</p>
     <p>Suggested Calorie intake to Gain Weight: ${state.calCountGain}</p>
-    <p>Suggested Calorie intake to Lose Weight: ${state.calCountLose}</p>`
+    <p>Suggested Calorie intake to Lose Weight: ${state.calCountLose}</p>
+    <p>Todays Caloric Intake: ${state.todaysCalIntakeTotal}</p>`
   )
+}
+
+const calculateCalIntake = function(cal) {
+  console.log(cal);
+  state.todaysCalIntake = state.todaysCalIntake + cal;
 }
 
 const displayTodaysMenu = function() {
@@ -106,6 +122,7 @@ $('.flexcontainer').on('click','.select', function(){
   $(this).closest('div').find('.title').text(),
   $(this).closest('div').find('.calories').text());
   displayTodaysMenu();
+  displayUserCal();
 });
 
 $('.flexcontainer').on('click', 'button.delete', function(event){
