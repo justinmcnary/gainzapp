@@ -3,9 +3,10 @@ const appKey = '8a580ee40ddee9e24cc9c02664aced07';
 
 const state = {
   weight: 0,
-  lbm: 0,
-  age: 0,
-  calorieGoal: 2000,
+  sex: "",
+  calCountSustain: 2000,
+  calCountGain: 2000,
+  calCountLose: 2000,
   searchItems: [],
   storedItems: []
 }
@@ -22,15 +23,9 @@ function getFoodFromApi(query){
 const addItem = function(state, itemName, cal) {
   let itemObj = {itemName, cal};
   state.storedItems.push(itemObj);
-  // console.log(state);
 }
 
 const removeItem = function(state, iRemoving) {
-  //state.storeditems loop
-  // string.trim()
-  //string.toLowerCase()
-  //if items.name === item
-  //return item
   let normalizeRemoving = iRemoving.trim().toLowerCase();
   state.storedItems.map(function(item, i){
     let normalizeName = item.itemName.trim().toLowerCase();
@@ -40,11 +35,30 @@ const removeItem = function(state, iRemoving) {
   })
 }
 
-const userInputs = function(weight, lbm) {
+const userInputs = function(weight, sex) {
   state.weight = weight;
-  state.lbm = lbm;
+  state.sex = sex;
+  if (sex === "female") {
+    state.calCountSustain = 10 * weight;
+    state.calCountGain = (10 * weight) + 300;
+    state.calCountLose = (10 * weight) - 300;
+  }
+  else {
+    state.calCountSustain = 11 * weight;
+    state.calCountGain = (11 * weight) + 500;
+    state.calCountLose = (11 * weight) - 500;
+  }
+  displayUserCal();
 }
 
+const displayUserCal = function() {
+  $('.js-user').append(
+    `<div class= 'userStats'>
+    <p>Suggested Calorie intake to Sustain Weight: ${state.calCountSustain}</p>
+    <p>Suggested Calorie intake to Gain Weight: ${state.calCountGain}</p>
+    <p>Suggested Calorie intake to Lose Weight: ${state.calCountLose}</p>`
+  )
+}
 
 const displayTodaysMenu = function() {
   $('.js-todays-meals').html("");
@@ -83,8 +97,8 @@ function watchSubmit() {
   $('.setup').submit(function(e) {
     e.preventDefault;
     let weight = $(this).find('.weight').val();
-    let lbm = $('.lbm').val();
-    userInputs(weight, lbm);
+    let sex = $('input[name=gender]:checked', '.sex').val();
+    userInputs(weight, sex);
   });
 
 $('.flexcontainer').on('click','.select', function(){
@@ -105,3 +119,6 @@ $('.startpage').on('click', 'button.next', function(event){
 });
 
 watchSubmit();
+
+
+//Calorie Counter//
