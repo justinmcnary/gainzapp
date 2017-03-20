@@ -27,11 +27,18 @@ const addItem = function(state, itemName, cal) {
   state.storedItems.push(itemObj);
   let numCal = cal.replace ( /[^0-9.]/g, '' );
   state.todaysCalIntake.push(+numCal);
+  // state.todaysCalIntakeTotal = state.todaysCalIntake.reduce(add, 0);
+  // function add (a,b) {
+  //   return a + b;
+  //}
+}
+
+const calculateCal = function(state){
+  console.log(state);
   state.todaysCalIntakeTotal = state.todaysCalIntake.reduce(add, 0);
   function add (a,b) {
     return a + b;
   }
-  console.log(state.todaysCalIntakeTotal);
 }
 
 const removeItem = function(state, iRemoving) {
@@ -40,6 +47,17 @@ const removeItem = function(state, iRemoving) {
     let normalizeName = item.itemName.trim().toLowerCase();
     if(normalizeName === normalizeRemoving){
       state.storedItems.splice(i, 1);
+    }
+  })
+}
+
+const removeCal = function(state, calCount) {
+  state.todaysCalIntake.map(function(item, i){
+    console.log(calCount);
+    console.log(item);
+    if (item == calCount) {
+      console.log("matched cal count", calCount);
+      state.todaysCalIntake.splice(i,1);
     }
   })
 }
@@ -121,13 +139,19 @@ $('.flexcontainer').on('click','.select', function(){
   addItem(state, 
   $(this).closest('div').find('.title').text(),
   $(this).closest('div').find('.calories').text());
+  calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
 });
 
 $('.flexcontainer').on('click', 'button.delete', function(event){
   removeItem(state, $(this).closest('div').children().eq(0).text());
+  let calDelete = $(this).closest('div').children().eq(1).text();
+  let numCal = calDelete.replace( /[^0-9.]/g, '' );
+  removeCal(state, numCal);
+  calculateCal(state);
   displayTodaysMenu();
+  displayUserCal();
 });
 
 $('.startpage').on('click', 'button.next', function(event){
