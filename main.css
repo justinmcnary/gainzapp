@@ -1,58 +1,79 @@
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-.startpage{
-  text-align: center;
+.menubar {
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 10%;
+  /*width: 33.3333%;*/
+  height: 100vh;
+  cursor: pointer;
+   /*-webkit-transition: width 2s  For Safari 3.1 to 6.0 */
+  transition: width 0.3s, color 1s;
 }
 
-.next {
-  margin: 10px;
+.menubutton {
+  font-size: 40px;
+  color: white;
 }
 
-
-.flexcontainer {
-   display: -webkit-flex;
-   display: flex;
+.openmenubar {
+  width: 30%;
+  background-color: red;
 }
+
 .header {
   text-align: center;
-}
-
-.bigitem {
-   /* This will be twice as big as the small item. */
-   -webkit-flex: 2 0 0; 
-   flex: 2 0 0;
-   margin-left: 10%; 
-   margin-right: 2%;
-}
-.smallitem {
-   -webkit-flex: 1 0 0;
-   flex: 1 0 0;
-   margin-right: 10%;
+  font-weight: bold;
 }
 
 .hidden {
   display: none;
 }
 
-@media (max-width: 400px) {
-  .flex-grid {
-    display: block;
-  }
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.bigitem2 {
-   /* This will be twice as big as the small item. */
-   -webkit-flex: 2 0 0; 
-   flex: 2 0 0;
-   margin-left: 10%; 
-   margin-right: 2%;
-   text-align: left;
+/*.startpage {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.main {
+ align-self: flex-start;
 }
-.smallitem2 {
-   -webkit-flex: 1 0 0;
-   flex: 1 0 0;
-   margin-right: 10%;
-   text-align: left;
+
+.food-search {
+  text-align: center;
+}
+
+.bar {
+    background: url(search-white.png) no-repeat 10px 6px #fcfcfc;
+    border: 1px solid #d1d1d1;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #8C9AA4;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
 }

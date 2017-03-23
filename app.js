@@ -27,10 +27,6 @@ const addItem = function(state, itemName, cal) {
   state.storedItems.push(itemObj);
   let numCal = cal.replace ( /[^0-9.]/g, '' );
   state.todaysCalIntake.push(+numCal);
-  // state.todaysCalIntakeTotal = state.todaysCalIntake.reduce(add, 0);
-  // function add (a,b) {
-  //   return a + b;
-  //}
 }
 
 const calculateCal = function(state){
@@ -155,11 +151,14 @@ $('.flexcontainer').on('click', 'button.delete', function(event){
 });
 
 $('.startpage').on('click', 'button.next', function(event){
-  $('header').removeClass('hidden');
+  $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
 });
 
+$('.menubar').on('click', function(event){
+  $('.menubar').toggleClass('openmenubar');
+  console.log('is working');
+})
+
 watchSubmit();
 
-
-//Calorie Counter//
