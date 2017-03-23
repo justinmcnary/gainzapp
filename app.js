@@ -125,9 +125,9 @@ function watchSubmit() {
   });
 }
   $('.setup').submit(function(e) {
-    e.preventDefault;
+    e.preventDefault();
     let weight = $(this).find('.weight').val();
-    let sex = $('input[name=gender]:checked', '.sex').val();
+    let sex = $('input[name=gender]:checked').val();
     userInputs(weight, sex);
   });
 
