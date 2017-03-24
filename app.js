@@ -93,19 +93,16 @@ const displayUserCal = function() {
   $('.js-user').html("");
   $('.js-user').append(
     `<div class= 'userStats'>
-     <p>GOAL: ${state.goal} / ${state.todaysCalIntakeTotal}</p>
+     <h3>GOAL: ${state.goal} / ${state.todaysCalIntakeTotal}</h3>
+     <h4>Gender: ${state.sex}</h4>
+     <h4>Weight: ${state.weight}</h4>
+     <p>Sustain: ${state.calCountSustain}</p>
+     <p>Gain: ${state.calCountGain}</p>
+     <p>Shred: ${state.calCountLose}</p>
      </div>`
   )
 }
 
-const buildMenu = function() {
-  $('.user-stats').html("");
-  $('.user-stats').append(
-    `<li>Sustain: ${state.calCountSustain}</li>
-     <li>Gain: ${state.calCountGain}</li>
-     <li>Shred: ${state.calCountLose}</li>`
-  )
-}
 
 const calculateCalIntake = function(cal) {
   console.log(cal);
@@ -211,25 +208,50 @@ $('.nav-menu').on('click', '#start', function(event){
   $('.main').addClass('hidden');
   $('.startpage').removeClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#info', function(event){
   $('.main').addClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').removeClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#main', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').addClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#meals', function(event){
-  console.log('working');
   $('.meals').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
+})
+$('.nav-menu').on('click', '#stats', function(event){
+  $('.js-user').removeClass('hidden');
+  $('.meals').addClass('hidden');
+  $('.main').addClass('hidden');
+  $('.startpage').addClass('hidden');
+  $('.intro').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 
 $('.final-result').on('click', 'button.reset', function(event){
