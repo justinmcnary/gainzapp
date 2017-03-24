@@ -206,6 +206,32 @@ $('.menubar').on('click', 'p', function(event){
   displayTodaysMenu();
 })
 
+$('.nav-menu').on('click', '#start', function(event){
+  $('.intro').addClass('hidden');
+  $('.main').addClass('hidden');
+  $('.startpage').removeClass('hidden');
+  $('.meals').addClass('hidden');
+})
+$('.nav-menu').on('click', '#info', function(event){
+  $('.main').addClass('hidden');
+  $('.startpage').addClass('hidden');
+  $('.intro').removeClass('hidden');
+  $('.meals').addClass('hidden');
+})
+$('.nav-menu').on('click', '#main', function(event){
+  $('.main').removeClass('hidden');
+  $('.startpage').addClass('hidden');
+  $('.intro').addClass('hidden');
+  $('.meals').addClass('hidden');
+})
+$('.nav-menu').on('click', '#meals', function(event){
+  console.log('working');
+  $('.meals').removeClass('hidden');
+  $('.main').addClass('hidden');
+  $('.startpage').addClass('hidden');
+  $('.intro').addClass('hidden');
+})
+
 $('.final-result').on('click', 'button.reset', function(event){
   state.weight= 0;
   state.sex = "";
@@ -225,5 +251,4 @@ $('.final-result').on('click', 'button.reset', function(event){
 
 
 watchSubmit();
-goalWatch();
 
