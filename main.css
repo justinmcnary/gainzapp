@@ -3,22 +3,84 @@
   font-family: 'Roboto', sans-serif;
 }
 
-button {
-  cursor: pointer;
+
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(Shoes-Stories.jpg) no-repeat;
+    background-size: cover; 
 }
 
+button {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
 .setup{
+  text-align: left;
+  color: white;
+}
+
+.buttonHolder {
   text-align: center;
+}
+
+.next{
+  margin-top: 20px;
+  font-size: 60px;
+  font-family: 'Roboto', sans-serif;
+  background-color: lightgrey;
+  color: white; 
+  border: none;
+  opacity: .8;
+}
+
+.reset {
+  color: black;
+}
+
+.startpage{
+  color: white;
 }
 
 label {
   font-size: 20px;
 }
 
+.animate {
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+
 .menubar {
   z-index: 9999;
   background-color: lightgray;
-  opacity: .6;
+  opacity: .8;
   color: white;
   position: fixed;
   top: 0;
@@ -53,9 +115,17 @@ label {
   cursor: pointer;
 }
 
+.title-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 80px;
+  margin-bottom: 5px;
+}
+
 .header {
   text-align: center;
   font-weight: bold;
+  color: white;
 }
 
 .hidden {
@@ -74,12 +144,14 @@ label {
   height: 100vm;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .long-text {
   text-align: left;
   margin: 10px;
+  background-color: lightgray;
+  opacity: .8;
 }
 
 .mealBar {
@@ -108,7 +180,7 @@ label {
   color: white;
   padding: 10px;
   background-color: gray;
-  opacity: .6;
+  opacity: .8;
 }
 
 .food-search {
@@ -135,6 +207,16 @@ label {
 }
 
 @media all and (max-width:800px) {
+    html {
+          background: url(Shoes-Stories.jpg) #000 no-repeat center center fixed;
+      }
+      #bgvid {
+          display: none;
+      }
+  .long-text {
+    background-color: transparent;
+    color: black;
+  }
   .text{
     flex-direction: column;
     justify-content: center;
@@ -156,6 +238,7 @@ label {
   .menubar {
     height: 10%;
     width: 10%;
+    opacity: 1;
   }
   .menubutton {
     margin-top: 5px;

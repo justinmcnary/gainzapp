@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700i" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-  <title>GAINZ</title>
+  <title>calBOSS</title>
 </head>
 
 <body>
+<video playsinline autoplay muted loop poster="Shoes-Stories.jpg" id="bgvid">
+    <source src="Shoes-Stories.webm" type="video/webm">
+    <source src="Shoes-Stories.mp4" type="video/mp4">
+</video>
 
   <div class="menubar">
     <p class="menubutton">&#9776;</p>
@@ -25,8 +29,11 @@
     <div class="startpage">
       <div class="wrapper">
       <div>
-      <h1 class="header">Welcome to CalBOSS</h1>
-      <p class="header">The painless way to determine appropriate caloric intake and track your meals throughout the day.</p>
+      <h1 class="title-header">calBOSS</h1>
+      <h3 class="header">
+       Set goals.<br>
+       Track meals.<br>
+       Be happy.</h3>
       <form action="#" class="setup">
         <label for="weight">Weight:</label>
         <input type="number" class="weight bar">
@@ -39,7 +46,9 @@
           <input type="radio" name="goal" value="gain" id="gain"> Gain
           <input type="radio" name="goal" value="shred" id="shred"> Shred
         </div>
+        <div class="buttonHolder">
         <button type="submit" class="next">Next</button>
+        </div>
       </form>
     </div>
    </div>
@@ -123,15 +132,16 @@
     <div id="main" class="main hidden">
       <header class="header">
         <h1>Search the food database to track caloric intake</h1>
-        <p>Be as specific as possible to maximize results</p>
+        <h3>Be as specific as possible to maximize results</h3>
       </header>
 
       <div class="food-search">
         <form action="#" class="js-search-form">
           <label for="query"></label>
-          <input type="text" class="js-query bar">
+          <input type="text" class="js-query bar" placeholder="bacon etc..">
           <button type="submit">Search</button>
         </form>
+        <h3>Click or Press a button below</h3>
       </div>
 
       <div>
@@ -149,7 +159,9 @@
         <div class="js-user text"></div>
     </div>
 
-    <div class="final-result text"></div>
+    
+    <div id="final" class="hidden final-result"></div>
+  
 
 </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

@@ -146,12 +146,11 @@ const displayFinal = function() {
   $('.final-result').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.final-result').html("");
-  $('.final-result').append(
-    `<h1>You have reached todays Goal!</h1>
-     <h2>Todays Calories:${state.todaysCalIntakeTotal}</h2>
-     <h2>Todays Goal:${state.goal}</h2>
-     <button class= "reset">Reset</button>`
-  )
+  let x = `<h1>You have reached todays Goal!</h1>
+      <h2>Todays Calories: ${state.todaysCalIntakeTotal}</h2>
+      <h2>Todays Goal: ${state.goal}</h2>
+      <button class= "reset">Reset</button>`
+  $(x).appendTo('.final-result').addClass('animate');
 }
 
 function watchSubmit() {
@@ -159,6 +158,7 @@ function watchSubmit() {
     e.preventDefault();
     let query = $(this).find('.js-query').val();
     getFoodFromApi(query);
+    $(this).closest('form').find("input[type=text], textarea").val("");
   });
 }
   $('.setup').submit(function(e) {
@@ -173,6 +173,7 @@ $('.js-search-results').on('click','.select', function(){
   addItem(state, 
   $(this).closest('div').find('.title').text(),
   $(this).closest('div').find('.calories').text());
+  $(this).addClass('animate');
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
@@ -193,6 +194,7 @@ $('div.js-todays-meals').on('click', 'button.delete', function(event){
 $('.startpage').on('click', 'button.next', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
+  $('.js-search-results').html("");
 });
 
 $('.menubar').on('click', 'p', function(event){
