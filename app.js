@@ -7,6 +7,7 @@ const state = {
   calCountSustain: 2000,
   calCountGain: 2000,
   calCountLose: 2000,
+  goal: 2000,
   todaysCalIntakeTotal: 0,
   todaysCalIntake: [],
   searchItems: [],
@@ -30,7 +31,6 @@ const addItem = function(state, itemName, cal) {
 }
 
 const calculateCal = function(state){
-  console.log(state);
   state.todaysCalIntakeTotal = state.todaysCalIntake.reduce(add, 0);
   function add (a,b) {
     return a + b;
@@ -58,30 +58,52 @@ const removeCal = function(state, calCount) {
   })
 }
 
-const userInputs = function(weight, sex) {
+const userInputs = function(weight, sex, goal) {
   state.weight = weight;
   state.sex = sex;
   if (sex === "female") {
     state.calCountSustain = 10 * weight;
     state.calCountGain = (10 * weight) + 300;
-    state.calCountLose = (10 * weight) - 300;
+    state.calCountLose = (10 * weight) - 200;
+      if (goal === "maintain") {
+        state.goal = (state.calCountSustain);
+      }
+      else if (goal === "gain") {
+        state.goal = (state.calCountGain);
+      }
+      else {state.goal = state.calCountLose};
   }
   else {
     state.calCountSustain = 11 * weight;
     state.calCountGain = (11 * weight) + 500;
-    state.calCountLose = (11 * weight) - 500;
+    state.calCountLose = (11 * weight) - 350;
+      if (goal === "maintain") {
+        state.goal = (state.calCountSustain);
+      }
+      else if (goal === "gain") {
+        state.goal = (state.calCountGain);
+      }
+      else {state.goal = state.calCountLose};
   }
   displayUserCal();
 }
 
 const displayUserCal = function() {
+  let goalPercent = state.goal/state.todaysCalIntakeTotal;
   $('.js-user').html("");
   $('.js-user').append(
     `<div class= 'userStats'>
-    <p>Suggested Calorie intake to Sustain Weight: ${state.calCountSustain}</p>
-    <p>Suggested Calorie intake to Gain Weight: ${state.calCountGain}</p>
-    <p>Suggested Calorie intake to Lose Weight: ${state.calCountLose}</p>
-    <p>Todays Caloric Intake: ${state.todaysCalIntakeTotal}</p>`
+     <p>GOAL: ${state.goal} / ${state.todaysCalIntakeTotal}</p>
+     </div>`
+  )
+}
+
+const buildMenu = function() {
+  $('.user-stats').html("");
+  $('.user-stats').append(
+    `<li>Sustain: ${state.calCountSustain}</li>
+     <li>Gain: ${state.calCountGain}</li>
+     <li>Shred: ${state.calCountLose}</li>`
   )
 }
 
@@ -117,6 +139,25 @@ const displayResults = function() {
   });
 }
 
+const goalWatch = function() {
+  if ( state.todaysCalIntakeTotal >= state.goal) {
+    displayFinal();
+  }
+}
+
+const displayFinal = function() {
+  $('.final-result').html("");
+  $('.final-result').removeClass('hidden');
+  $('.main').addClass('hidden');
+  $('.final-result').html("");
+  $('.final-result').append(
+    `<h1>You have reached todays Goal!</h1>
+     <h2>Todays Calories:${state.todaysCalIntakeTotal}</h2>
+     <h2>Todays Goal:${state.goal}</h2>
+     <button class= "reset">Reset</button>`
+  )
+}
+
 function watchSubmit() {
   $('.js-search-form').submit(function(e) {
     e.preventDefault();
@@ -128,7 +169,8 @@ function watchSubmit() {
     e.preventDefault();
     let weight = $(this).find('.weight').val();
     let sex = $('input[name=gender]:checked').val();
-    userInputs(weight, sex);
+    let goal = $('input[name=goal]:checked').val();
+    userInputs(weight, sex, goal);
   });
 
 $('.flexcontainer').on('click','.select', function(){
@@ -138,6 +180,7 @@ $('.flexcontainer').on('click','.select', function(){
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
+  goalWatch();
 });
 
 $('.flexcontainer').on('click', 'button.delete', function(event){
@@ -155,10 +198,32 @@ $('.startpage').on('click', 'button.next', function(event){
   $('.startpage').addClass('hidden');
 });
 
-$('.menubar').on('click', function(event){
+$('.menubar').on('click', 'p', function(event){
   $('.menubar').toggleClass('openmenubar');
-  console.log('is working');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
+  buildMenu();
+  displayTodaysMenu();
 })
 
+$('.final-result').on('click', 'button.reset', function(event){
+  state.weight= 0;
+  state.sex = "";
+  state.calCountSustain = 2000;
+  state.calCountGain = 2000;
+  state.calCountLose = 2000;
+  state.goal = 2000;
+  state.todaysCalIntakeTotal = 0;
+  state.todaysCalIntake = [];
+  state.searchItems = [];
+  state.storedItems = [];
+  $('.js-todays-meals').html("");
+  $('.js-search-results').html("");
+  $('.startpage').removeClass('hidden');
+  $('.final-result').addClass('hidden');
+})
+
+
 watchSubmit();
+goalWatch();
 

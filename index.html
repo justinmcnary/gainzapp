@@ -11,12 +11,17 @@
 
 <body>
   <div class="menubar">
-    <p class="menubutton">=</p>
-    <ul>
-    <li class="user">UserStats</li>
-    <li class="food">FoodSearch</li>
-    <li class="today">Todays Meals</li>
-  </ul>
+    <p class="menubutton">&#9776;</p>
+    <ul class="nav-menu hidden">
+      <li><a href"#start">UserStats</a></li>
+      <li class="cal-goals">Goals</li>
+      <li class="todays-menu">Food Search</li>
+      <li class="todays-menu">Menu</li>
+    </ul>
+    <div class="user-stats hidden"></div>
+    <div class="flexcontainer">
+      <div class="js-todays-meals"></div>
+    </div>
   </div>
   <div class="wrapper">
     <div class="startpage">
@@ -24,8 +29,15 @@
       <form action="#" class="setup">
         <label for="weight">Weight:</label>
         <input type="number" class="weight bar">
+        <div class="sex">
         <input type="radio" name="gender" value="male" id="male"> Male
         <input type="radio" name="gender" value="female" id="female"> Female
+        </div>
+        <div class="goal">
+          <input type="radio" name="goal" value="maintain" id="maintain"> Maintain
+          <input type="radio" name="goal" value="gain" id="gain"> Gain
+          <input type="radio" name="goal" value="shred" id="shred"> Shred
+        </div>
         <button type="submit" class="next">Next</button>
       </form>
     </div>
@@ -92,7 +104,8 @@
 
           <p>Losing weight and reducing body fat is a gradual process- for lasting results aim to lose no more than 1-2 pounds
             per week through training and diet.</p>-->
-
+  
+  
   <div class="main hidden">
     <header class="header">
       <h1>Time for GAINZ, Search the food database</h1>
@@ -114,6 +127,7 @@
       <div class="js-todays-meals"></div>
     </div>
   </div>
+    <div class="final-result"></div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

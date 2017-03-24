@@ -3,28 +3,34 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.setup{
+  text-align: center;
+}
+
+label {
+  font-size: 20px;
+}
+
 .menubar {
-  background-color: black;
+  background-color: lightgrey;
   color: white;
   position: fixed;
   top: 0;
   right: 0;
-  width: 10%;
-  /*width: 33.3333%;*/
+  width: 5%;
   height: 100vh;
   cursor: pointer;
-   /*-webkit-transition: width 2s  For Safari 3.1 to 6.0 */
   transition: width 0.3s, color 1s;
 }
 
 .menubutton {
+  text-align: center;
   font-size: 40px;
   color: white;
 }
 
 .openmenubar {
   width: 30%;
-  background-color: red;
 }
 
 .header {
@@ -61,7 +67,7 @@
 .bar {
     background: url(search-white.png) no-repeat 10px 6px #fcfcfc;
     border: 1px solid #d1d1d1;
-    font: bold 12px Arial,Helvetica,Sans-serif;
+    font: bold 20px;
     color: #8C9AA4;
     width: 150px;
     padding: 6px 15px 6px 35px;
@@ -76,4 +82,16 @@
     -moz-transition: all 0.7s ease 0s;
     -o-transition: all 0.7s ease 0s;
     transition: all 0.7s ease 0s;
+}
+
+@media all and (max-width:800px) {
+  .wrapper{
+    flex-wrap: wrap;
+  }
+}
+
+@media all and (max-width:500px) {
+  .wrapper {
+    flex-direction: column; 
+  }
 }
