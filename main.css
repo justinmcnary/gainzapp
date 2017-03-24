@@ -97,7 +97,8 @@ label {
 }
 
 .itemBar {
-  justify-content: flex-start;
+  width: 40%;
+  justify-content: center;
   border: solid 5px black;
   font-size: 20px;
   color: white;
