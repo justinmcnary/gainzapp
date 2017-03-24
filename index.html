@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   <div class="menubar">
     <p class="menubutton">&#9776;</p>
     <nav class="nav-menu hidden">
@@ -20,8 +21,10 @@
       <li id="info">More Information</li>
     </nav>
   </div>
-  <div class="wrapper">
+
     <div class="startpage">
+      <div class="wrapper">
+      <div>
       <h1 class="header">Welcome to CalBOSS</h1>
       <p class="header">The painless way to determine appropriate caloric intake and track your meals throughout the day.</p>
       <form action="#" class="setup">
@@ -39,6 +42,8 @@
         <button type="submit" class="next">Next</button>
       </form>
     </div>
+   </div>
+  </div>
 
     <div class="intro hidden">
       <div class="text">
@@ -129,27 +134,24 @@
         </form>
       </div>
 
-      <div class="text">
-      <div class="flexcontainer">
-        <div class="js-search-results"></div>
+      <div>
+        <div class="js-search-results text"></div>
       </div>
-    </div>
     </div>
 
     <div id="meals" class="hidden meals">
-      <h1 class="meal-header">Todays Meals:</h1>
-      <div class="text">
-        <div class="flexcontainer">
-          <div class="js-todays-meals"></div>
-        </div>
-      </div>
+      <h1 class="header">Todays Meals:</h1>
+        <div class="js-todays-meals text"></div>
     </div>
-    <div class="final-result"></div>
-    <div id="stats" class="js-user hidden">
-      <h1>User Stats</h1>
-    </div>
-  </div>
 
+    <div id="stats" class="hidden js-user">
+      <h1 class="header">User Stats:</h1>
+        <div class="js-user text"></div>
+    </div>
+
+    <div class="final-result text"></div>
+
+</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="app.js"></script>
 </body>

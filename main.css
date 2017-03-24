@@ -3,6 +3,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 .setup{
   text-align: center;
 }
@@ -12,15 +16,15 @@ label {
 }
 
 .menubar {
+  z-index: 9999;
   background-color: lightgray;
   opacity: .6;
   color: white;
   position: fixed;
   top: 0;
   right: 0;
-  width: 5%;
+  width: 8%;
   height: 100vh;
-  cursor: pointer;
   transition: width 0.3s, color 1s;
 }
 
@@ -28,9 +32,11 @@ label {
   text-align: center;
   font-size: 40px;
   color: white;
+  cursor: pointer;
 }
 
 .openmenubar {
+  z-index: 9999;
   width: 30%;
   background-color: lightgrey;
   opacity: 1;
@@ -44,6 +50,7 @@ label {
 
 .nav-menu li {
   padding: 10px;
+  cursor: pointer;
 }
 
 .header {
@@ -63,10 +70,10 @@ label {
 }
 
 .text {
+  margin-top: 10px;
+  height: 100vm;
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  width: 100%;
   justify-content: center;
 }
 
@@ -76,49 +83,32 @@ label {
 }
 
 .mealBar {
-  justify-content: flex-start;
+  flex-grow: 1;
   border: solid 5px black;
   font-size: 20px;
   color: white;
-  text-align: left;
   margin: 10px;
   padding: 10px;
   background-color: gray;
   opacity: .6;
-}
-
-.meal-header {
-  align-self: center;
-  text-align: center;
-  margin-top: 100px;
 }
 
 .delete {
   text-align: center;
+  font-size: x-large;
 }
 
-.itemBar {
-  flex: 1;
-  width: 400px;
-  justify-content: center;
-  border: solid 5px black;
+.box {
+  flex-basis: 400px;
+  flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+  border: solid black 2px;
   font-size: 20px;
   color: white;
-  text-align: left;
-  margin: 10px;
   padding: 10px;
   background-color: gray;
   opacity: .6;
-}
-/*.startpage {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}*/
-
-.main {
- align-self: flex-start;
 }
 
 .food-search {
@@ -145,9 +135,37 @@ label {
 }
 
 @media all and (max-width:800px) {
-
+  .text{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .box {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mealBar {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .menubar {
+    height: 10%;
+    width: 10%;
+  }
+  .menubutton {
+    margin-top: 5px;
+  }
+  .openmenubar {
+    height: 100vh;
+    width: 30%;
+  }
 }
 
-@media all and (max-width:500px) {
-
+@media all and (max-width:450px) {
+  
 }
