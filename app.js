@@ -229,6 +229,7 @@ $('.nav-menu').on('click', '#start', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#info', function(event){
   $('.main').addClass('hidden');
@@ -238,6 +239,7 @@ $('.nav-menu').on('click', '#info', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#main', function(event){
   $('.main').removeClass('hidden');
@@ -247,6 +249,7 @@ $('.nav-menu').on('click', '#main', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#meals', function(event){
   $('.meals').removeClass('hidden');
@@ -256,6 +259,7 @@ $('.nav-menu').on('click', '#meals', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#stats', function(event){
   $('.js-user').removeClass('hidden');
@@ -265,6 +269,7 @@ $('.nav-menu').on('click', '#stats', function(event){
   $('.intro').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
 })
 
 //*State Reset*//
