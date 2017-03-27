@@ -221,6 +221,7 @@ label {
     flex-direction: column;
     justify-content: center;
   }
+  
   .box {
     min-width: 100%;
     width: 100%;
