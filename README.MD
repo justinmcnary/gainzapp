@@ -8,6 +8,6 @@ Thinkful capstone project one.
 ##calBOSS is live at: https://justinmcnary.github.io/gainzapp/
 
 ##Technical
-The app is developed using html, css, javascript, jquery, and the Nutritionix api. The app is fully responsive using css flex-box and media queries. The background scales from a full screen video to background image depending upon screen size. 
+The app is developed using html, css, javascript, jquery, and the Nutritionix api. The app is fully responsive using css flex-box and media queries. An auto-prefixer was used on the auto.css file to assist with flex box integration. The background scales from a full screen video to background image depending upon screen size. 
 
 ##screenshots of the basic stages of the app are provided showing the landing page, menu bar, meal tracker, programmable user statistics, and nutritionix food search api results. 

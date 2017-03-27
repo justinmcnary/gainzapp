@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(Shoes-Stories.jpg) no-repeat;
+    background-size: cover; 
+}
+
+label {
+  font-size: 20px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.setup{
+  text-align: left;
+  color: white;
+}
+
+.buttonHolder {
+  text-align: center;
+}
+
+.next{
+  margin-top: 20px;
+  font-size: 60px;
+  font-family: 'Roboto', sans-serif;
+  background-color: lightgrey;
+  color: white; 
+  border: none;
+  opacity: .8;
+}
+
+.reset {
+  color: black;
+}
+
+.delete {
+  text-align: center;
+  font-size: x-large;
+}
+
+.startpage{
+  color: white;
+}
+
+.menubar {
+  z-index: 9999;
+  background-color: lightgray;
+  opacity: .8;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 8%;
+  height: 100vh;
+  transition: width 0.3s, color 1s;
+}
+
+.menubutton {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.openmenubar {
+  z-index: 9999;
+  width: 30%;
+  background-color: lightgrey;
+  opacity: 1;
+}
+
+.nav-menu {
+  list-style: none;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.nav-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.title-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 80px;
+  margin-bottom: 5px;
+}
+
+.header {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.wrapper {
+  height: 100vh;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.text {
+  margin-top: 10px;
+  height: 100vm;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+
+.long-text {
+  text-align: left;
+  margin: 10px;
+  background-color: lightgray;
+  opacity: .8;
+}
+
+.mealBar {
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border: solid 5px black;
+  font-size: 20px;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  background-color: gray;
+  opacity: .6;
+}
+
+.box {
+  -webkit-flex-basis: 400px;
+      -ms-flex-preferred-size: 400px;
+          flex-basis: 400px;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+  border: solid black 2px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  background-color: gray;
+  opacity: .8;
+}
+
+
+.food-search {
+  text-align: center;
+}
+
+.bar {
+    border: 1px solid #d1d1d1;
+    font: bold 20px;
+    color: #8C9AA4;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    transition: all 0.7s ease 0s;
+}
+
+.animate {
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+  -webkit-animation: pulse 5s infinite;
+          animation: pulse 5s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@media all and (max-width:800px) {
+    html {
+          background: url(Shoes-Stories.jpg) #000 no-repeat center center fixed;
+      }
+      #bgvid {
+          display: none;
+      }
+  .long-text {
+    background-color: transparent;
+    color: black;
+  }
+  .text{
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .box {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mealBar {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .menubar {
+    height: 10%;
+    width: 10%;
+    opacity: 1;
+  }
+  .menubutton {
+    margin-top: 5px;
+  }
+  .openmenubar {
+    height: 100vh;
+    width: 30%;
+  }
+}
