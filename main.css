@@ -3,24 +3,90 @@
   font-family: 'Roboto', sans-serif;
 }
 
+
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(Shoes-Stories.jpg) no-repeat;
+    background-size: cover; 
+}
+
+button {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
 .setup{
+  text-align: left;
+  color: white;
+}
+
+.buttonHolder {
   text-align: center;
+}
+
+.next{
+  margin-top: 20px;
+  font-size: 60px;
+  font-family: 'Roboto', sans-serif;
+  background-color: lightgrey;
+  color: white; 
+  border: none;
+  opacity: .8;
+}
+
+.reset {
+  color: black;
+}
+
+.startpage{
+  color: white;
 }
 
 label {
   font-size: 20px;
 }
 
+.animate {
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+
 .menubar {
+  z-index: 9999;
   background-color: lightgray;
-  opacity: .6;
+  opacity: .8;
   color: white;
   position: fixed;
   top: 0;
   right: 0;
-  width: 5%;
+  width: 8%;
   height: 100vh;
-  cursor: pointer;
   transition: width 0.3s, color 1s;
 }
 
@@ -28,9 +94,11 @@ label {
   text-align: center;
   font-size: 40px;
   color: white;
+  cursor: pointer;
 }
 
 .openmenubar {
+  z-index: 9999;
   width: 30%;
   background-color: lightgrey;
   opacity: 1;
@@ -44,11 +112,20 @@ label {
 
 .nav-menu li {
   padding: 10px;
+  cursor: pointer;
+}
+
+.title-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 80px;
+  margin-bottom: 5px;
 }
 
 .header {
   text-align: center;
   font-weight: bold;
+  color: white;
 }
 
 .hidden {
@@ -63,60 +140,47 @@ label {
 }
 
 .text {
+  margin-top: 10px;
+  height: 100vm;
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .long-text {
   text-align: left;
   margin: 10px;
+  background-color: lightgray;
+  opacity: .8;
 }
 
 .mealBar {
-  justify-content: flex-start;
+  flex-grow: 1;
   border: solid 5px black;
   font-size: 20px;
   color: white;
-  text-align: left;
   margin: 10px;
   padding: 10px;
   background-color: gray;
   opacity: .6;
-}
-
-.meal-header {
-  align-self: center;
-  text-align: center;
-  margin-top: 100px;
 }
 
 .delete {
   text-align: center;
+  font-size: x-large;
 }
 
-.itemBar {
-  width: 40%;
-  justify-content: center;
-  border: solid 5px black;
-  font-size: 20px;
-  color: white;
-  text-align: left;
+.box {
+  flex-basis: 400px;
+  flex-grow: 1;
   margin: 10px;
   padding: 10px;
+  border: solid black 2px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
   background-color: gray;
-  opacity: .6;
-}
-/*.startpage {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}*/
-
-.main {
- align-self: flex-start;
+  opacity: .8;
 }
 
 .food-search {
@@ -143,13 +207,44 @@ label {
 }
 
 @media all and (max-width:800px) {
-  .wrapper{
-    flex-wrap: wrap;
+    html {
+          background: url(Shoes-Stories.jpg) #000 no-repeat center center fixed;
+      }
+      #bgvid {
+          display: none;
+      }
+  .long-text {
+    background-color: transparent;
+    color: black;
   }
-}
-
-@media all and (max-width:500px) {
-  .wrapper {
-    flex-direction: column; 
+  .text{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .box {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mealBar {
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .menubar {
+    height: 10%;
+    width: 10%;
+    opacity: 1;
+  }
+  .menubutton {
+    margin-top: 5px;
+  }
+  .openmenubar {
+    height: 100vh;
+    width: 30%;
   }
 }

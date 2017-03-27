@@ -49,10 +49,7 @@ const removeItem = function(state, iRemoving) {
 
 const removeCal = function(state, calCount) {
   state.todaysCalIntake.map(function(item, i){
-    console.log(calCount);
-    console.log(item);
     if (item === calCount) {
-      console.log("matched cal count", calCount);
       state.todaysCalIntake.splice(i,1);
     }
   })
@@ -92,20 +89,18 @@ const displayUserCal = function() {
   let goalPercent = state.goal/state.todaysCalIntakeTotal;
   $('.js-user').html("");
   $('.js-user').append(
-    `<div class= 'userStats'>
-     <p>GOAL: ${state.goal} / ${state.todaysCalIntakeTotal}</p>
+    `<h1 class="header">User Stats:</h1>
+     <div class="box">
+      <h3>GOAL: ${state.goal} / ${state.todaysCalIntakeTotal}</h3>
+      <h4>Gender: ${state.sex}</h4>
+      <h4>Weight: ${state.weight}</h4>
+      <p>Sustain: ${state.calCountSustain}</p>
+      <p>Gain: ${state.calCountGain}</p>
+      <p>Shred: ${state.calCountLose}</p>
      </div>`
   )
 }
 
-const buildMenu = function() {
-  $('.user-stats').html("");
-  $('.user-stats').append(
-    `<li>Sustain: ${state.calCountSustain}</li>
-     <li>Gain: ${state.calCountGain}</li>
-     <li>Shred: ${state.calCountLose}</li>`
-  )
-}
 
 const calculateCalIntake = function(cal) {
   console.log(cal);
@@ -117,9 +112,9 @@ const displayTodaysMenu = function() {
   state.storedItems.map(function(item) {
   $('.js-todays-meals').append(
     `<div class= "mealBar">
-     <p class"iName">${item.itemName}</p>
-     <p class"iCal">${item.cal}</p>
-     <button class= "delete"> Delete </button>
+        <p class"iName">${item.itemName}</p>
+        <p class"iCal">${item.cal}</p>
+        <button class= "delete"> Delete </button>
      </div>`)
   });
 }
@@ -130,11 +125,12 @@ const displayResults = function() {
   let items = item.fields;
   $('.js-search-results').append(
     `<div class= "itemBar">
-     <h2 class= "title"> ${items.brand_name} ${items.item_name}</h2>
-     <p class= "calories"> Calories: ${items.nf_calories} </p>
-     <p> Serving Size: ${items.nf_serving_size_qty} ${items.nf_serving_size_unit} </p>
-     <p> Total Fat: ${items.nf_total_fat} </p>
-     <button class= "select"> Select </button>
+      <button class="select box">
+        <h2 class= "title"> ${items.brand_name} ${items.item_name}</h2>
+        <p class= "calories"> Calories: ${items.nf_calories} </p>
+        <p> Serving Size: ${items.nf_serving_size_qty} ${items.nf_serving_size_unit} </p>
+        <p> Total Fat: ${items.nf_total_fat} </p>
+      </button>
      </div>`)
   });
 }
@@ -150,12 +146,11 @@ const displayFinal = function() {
   $('.final-result').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.final-result').html("");
-  $('.final-result').append(
-    `<h1>You have reached todays Goal!</h1>
-     <h2>Todays Calories:${state.todaysCalIntakeTotal}</h2>
-     <h2>Todays Goal:${state.goal}</h2>
-     <button class= "reset">Reset</button>`
-  )
+  let x = `<h1>You have reached todays Goal!</h1>
+      <h2>Todays Calories: ${state.todaysCalIntakeTotal}</h2>
+      <h2>Todays Goal: ${state.goal}</h2>
+      <button class= "reset">Reset</button>`
+  $(x).appendTo('.final-result').addClass('animate');
 }
 
 function watchSubmit() {
@@ -163,6 +158,7 @@ function watchSubmit() {
     e.preventDefault();
     let query = $(this).find('.js-query').val();
     getFoodFromApi(query);
+    $(this).closest('form').find("input[type=text], textarea").val("");
   });
 }
   $('.setup').submit(function(e) {
@@ -173,18 +169,20 @@ function watchSubmit() {
     userInputs(weight, sex, goal);
   });
 
-$('.flexcontainer').on('click','.select', function(){
+$('.js-search-results').on('click','.select', function(){
   addItem(state, 
   $(this).closest('div').find('.title').text(),
   $(this).closest('div').find('.calories').text());
+  $(this).addClass('animate');
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
   goalWatch();
 });
 
-$('.flexcontainer').on('click', 'button.delete', function(event){
-  removeItem(state, $(this).closest('div').children().eq(0).text());
+$('div.js-todays-meals').on('click', 'button.delete', function(event){
+  removeItem(state, 
+  $(this).closest('div').children().eq(0).text());
   let calDelete = $(this).closest('div').children().eq(1).text();
   let numCal = calDelete.replace( /[^0-9.]/g, '' );
   removeCal(state, +numCal);
@@ -196,13 +194,13 @@ $('.flexcontainer').on('click', 'button.delete', function(event){
 $('.startpage').on('click', 'button.next', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
+  $('.js-search-results').html("");
 });
 
 $('.menubar').on('click', 'p', function(event){
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
   $('.user-stats').toggleClass('hidden');
-  buildMenu();
   displayTodaysMenu();
 })
 
@@ -211,25 +209,50 @@ $('.nav-menu').on('click', '#start', function(event){
   $('.main').addClass('hidden');
   $('.startpage').removeClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#info', function(event){
   $('.main').addClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').removeClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#main', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').addClass('hidden');
   $('.meals').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 $('.nav-menu').on('click', '#meals', function(event){
-  console.log('working');
   $('.meals').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.startpage').addClass('hidden');
   $('.intro').addClass('hidden');
+  $('.js-user').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
+})
+$('.nav-menu').on('click', '#stats', function(event){
+  $('.js-user').removeClass('hidden');
+  $('.meals').addClass('hidden');
+  $('.main').addClass('hidden');
+  $('.startpage').addClass('hidden');
+  $('.intro').addClass('hidden');
+  $('.menubar').toggleClass('openmenubar');
+  $('.nav-menu').toggleClass('hidden');
+  $('.user-stats').toggleClass('hidden');
 })
 
 $('.final-result').on('click', 'button.reset', function(event){
@@ -245,6 +268,7 @@ $('.final-result').on('click', 'button.reset', function(event){
   state.storedItems = [];
   $('.js-todays-meals').html("");
   $('.js-search-results').html("");
+  $('.js-user').html("")
   $('.startpage').removeClass('hidden');
   $('.final-result').addClass('hidden');
 })
