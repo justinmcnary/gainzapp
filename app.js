@@ -1,14 +1,9 @@
-//*API key information*//
-const appID = '5ff9d9d1';
-const appKey = '8a580ee40ddee9e24cc9c02664aced07';
-
 //*Nutritionix API get request*//
 function getFoodFromApi(query){
   $.getJSON(`https://api.nutritionix.com/v1_1/search/${query}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5ff9d9d1&appKey=8a580ee40ddee9e24cc9c02664aced07`, (d)=>{
     state.searchItems = d.hits;
     displayResults();
   });
-
 };
 
 //*State information*//
@@ -41,8 +36,8 @@ const calculateCal = function(state){
   }
 }
 
-const removeItem = function(state, iRemoving) {
-  let normalizeRemoving = iRemoving.trim().toLowerCase();
+const removeItem = function(state, itemToRemove) {
+  let normalizeRemoving = itemToRemove.trim().toLowerCase();
   state.storedItems.map(function(item, i){
     let normalizeName = item.itemName.trim().toLowerCase();
     if(normalizeName === normalizeRemoving){
@@ -95,8 +90,15 @@ const calculateCalIntake = function(cal) {
 }
 
 //*Render functions*//
+const displayCalCounter = function() {
+  $('#calCounter').removeClass('hidden');
+  $('#calCounter').html("");
+  $('#calCounter').append(
+    `<p>G:${state.goal}<br>
+     Cal:${state.todaysCalIntakeTotal}</p>`);
+}
+
 const displayUserCal = function() {
-  let goalPercent = state.goal/state.todaysCalIntakeTotal;
   $('.js-user').html("");
   $('.js-user').append(
     `<h1 class="header">User Stats:</h1>
@@ -111,15 +113,11 @@ const displayUserCal = function() {
   )
 }
 
-<<<<<<< HEAD
-
 const calculateCalIntake = function(cal) {
   console.log(cal);
   state.todaysCalIntake = state.todaysCalIntake + cal;
 }
 
-=======
->>>>>>> master
 const displayTodaysMenu = function() {
   $('.js-todays-meals').html("");
   state.storedItems.map(function(item) {
@@ -137,7 +135,7 @@ const displayResults = function() {
   state.searchItems.map(function(item) {
   let items = item.fields;
   $('.js-search-results').append(
-    `<div class= "itemBar">
+    ` <div class= "itemBar">
       <button class="select box">
         <h2 class= "title"> ${items.brand_name} ${items.item_name}</h2>
         <p class= "calories"> Calories: ${items.nf_calories} </p>
@@ -153,11 +151,11 @@ const displayFinal = function() {
   $('.final-result').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.final-result').html("");
-  let x = `<h1>You have reached todays Goal!</h1>
+  let finalResultMesg = `<h1>You have reached todays Goal!</h1>
       <h2>Todays Calories: ${state.todaysCalIntakeTotal}</h2>
       <h2>Todays Goal: ${state.goal}</h2>
       <button class= "reset">Reset</button>`
-  $(x).appendTo('.final-result').addClass('animate');
+  $(finalResultMesg).appendTo('.final-result').addClass('animate');
 }
 
 const goalWatch = function() {
@@ -181,6 +179,7 @@ function watchSubmit() {
     let sex = $('input[name=gender]:checked').val();
     let goal = $('input[name=goal]:checked').val();
     userInputs(weight, sex, goal);
+    displayCalCounter();
   });
 
 $('.js-search-results').on('click','.select', function(){
@@ -192,6 +191,7 @@ $('.js-search-results').on('click','.select', function(){
   displayTodaysMenu();
   displayUserCal();
   goalWatch();
+  displayCalCounter();
 });
 
 $('div.js-todays-meals').on('click', 'button.delete', function(event){
@@ -203,22 +203,29 @@ $('div.js-todays-meals').on('click', 'button.delete', function(event){
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
+  displayCalCounter();
 });
 
 $('.startpage').on('click', 'button.next', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
   $('.js-search-results').html("");
+  displayCalCounter();
 });
 
 $('.menubar').on('click', 'p', function(event){
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
+
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
+
   displayTodaysMenu();
+  $('#calCounter').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
+  $('#calCounter2').html("");
+  $('#calCounter2').append(
+    `<p>G:${state.goal}<br>
+     Cal:${state.todaysCalIntakeTotal}</p>`);
 })
 
 
@@ -231,10 +238,7 @@ $('.nav-menu').on('click', '#start', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
 })
 $('.nav-menu').on('click', '#info', function(event){
   $('.main').addClass('hidden');
@@ -244,10 +248,8 @@ $('.nav-menu').on('click', '#info', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
+
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
 })
 $('.nav-menu').on('click', '#main', function(event){
   $('.main').removeClass('hidden');
@@ -257,10 +259,8 @@ $('.nav-menu').on('click', '#main', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
+
 })
 $('.nav-menu').on('click', '#meals', function(event){
   $('.meals').removeClass('hidden');
@@ -270,11 +270,9 @@ $('.nav-menu').on('click', '#meals', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
 })
+
 $('.nav-menu').on('click', '#stats', function(event){
   $('.js-user').removeClass('hidden');
   $('.meals').addClass('hidden');
@@ -283,10 +281,7 @@ $('.nav-menu').on('click', '#stats', function(event){
   $('.intro').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
-=======
->>>>>>> master
 })
 
 //*State Reset*//

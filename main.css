@@ -3,6 +3,9 @@
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  margin-right: 9%;
+}
 
 video#bgvid { 
     position: fixed;
@@ -19,7 +22,6 @@ video#bgvid {
     transform: translateX(-50%) translateY(-50%);
     background: url(Shoes-Stories.jpg) no-repeat;
     background-size: cover; 
-<<<<<<< HEAD
 }
 
 button {
@@ -35,8 +37,6 @@ button {
 
 .buttonHolder {
   text-align: center;
-=======
->>>>>>> master
 }
 
 .next{
@@ -61,7 +61,6 @@ label {
   font-size: 20px;
 }
 
-<<<<<<< HEAD
 .animate {
   color: white;
   text-align: center;
@@ -80,7 +79,6 @@ label {
   }
 }
 
-=======
 button {
   cursor: pointer;
   font-size: 20px;
@@ -88,8 +86,12 @@ button {
 
 
 .setup{
-  text-align: left;
+  text-align: center;
   color: white;
+}
+
+.sex{
+  padding: 20px;
 }
 
 .buttonHolder {
@@ -100,14 +102,10 @@ button {
   margin-top: 20px;
   font-size: 60px;
   font-family: 'Roboto', sans-serif;
-  background-color: lightgrey;
+  background-color: #86bbd8;
   color: white; 
-  border: none;
+  border: solid 3px white;
   opacity: .8;
-}
-
-.reset {
-  color: black;
 }
 
 .delete {
@@ -118,11 +116,10 @@ button {
 .startpage{
   color: white;
 }
->>>>>>> master
 
 .menubar {
   z-index: 9999;
-  background-color: lightgray;
+  background-color: #86bbd8;
   opacity: .8;
   color: white;
   position: fixed;
@@ -135,7 +132,7 @@ button {
 
 .menubutton {
   text-align: center;
-  font-size: 40px;
+  font-size: 60px;
   color: white;
   cursor: pointer;
 }
@@ -143,9 +140,22 @@ button {
 .openmenubar {
   z-index: 9999;
   width: 30%;
-  background-color: lightgrey;
+  background-color: #86bbd8;
   opacity: 1;
 }
+
+#calCounter {
+  text-align: center;
+  color: white;
+  opacity: 1;
+}
+
+#calCounter2 {
+  text-align: center;
+  color: white;
+  opacity: 1;
+}
+
 
 .nav-menu {
   list-style: none;
@@ -193,12 +203,15 @@ button {
 .long-text {
   text-align: left;
   margin: 10px;
-  background-color: lightgray;
+  background-color: #9ed886;
   opacity: .8;
+  padding: 20px;
 }
 
 .mealBar {
+  flex-basis: 250px;
   flex-grow: 1;
+  max-height: 200px;
   border: solid 5px black;
   font-size: 20px;
   color: white;
@@ -208,14 +221,11 @@ button {
   opacity: .6;
 }
 
-<<<<<<< HEAD
 .delete {
   text-align: center;
   font-size: x-large;
 }
 
-=======
->>>>>>> master
 .box {
   flex-basis: 400px;
   flex-grow: 1;
@@ -227,11 +237,8 @@ button {
   padding: 10px;
   background-color: gray;
   opacity: .8;
+  padding-right: 20px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 .food-search {
   text-align: center;
@@ -239,10 +246,13 @@ button {
 
 .bar {
     border: 1px solid #d1d1d1;
+    text-align: left;
     font: bold 20px;
-    color: #8C9AA4;
+    font-size: 20px;
+    color: #86bbd8;
     width: 150px;
-    padding: 6px 15px 6px 35px;
+    /*padding: 1px 15px 6px 35px;*/
+    padding: 6px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
@@ -256,7 +266,6 @@ button {
     transition: all 0.7s ease 0s;
 }
 
-<<<<<<< HEAD
 @media all and (max-width:800px) {
     html {
           background: url(Shoes-Stories.jpg) #000 no-repeat center center fixed;
@@ -268,7 +277,7 @@ button {
     background-color: transparent;
     color: black;
   }
-=======
+
 .animate {
   color: white;
   text-align: center;
@@ -283,54 +292,69 @@ button {
     background-color: grey;
   }
   100% {
-    background-color: black;
+    background-color: #86bbd8;
   }
+}
+
+.reset {
+  color: black;
 }
 
 @media all and (max-width:800px) {
     html {
-          background: url(Shoes-Stories.jpg) #000 no-repeat center center fixed;
+          /*background: url(Shoes-Stories.jpg) #000 center center fixed;*/
+          background-color: lightgray;
       }
       #bgvid {
           display: none;
       }
+
+.header {
+  padding: 10px;
+}
+
+
   .long-text {
     background-color: transparent;
     color: black;
   }
->>>>>>> master
   .text{
     flex-direction: column;
     justify-content: center;
   }
-<<<<<<< HEAD
-=======
   
->>>>>>> master
   .box {
-    min-width: 100%;
     width: 100%;
     text-align: center;
     margin-left: 0;
     margin-right: 0;
   }
+
   .mealBar {
-    min-width: 100%;
     width: 100%;
     text-align: center;
     margin-left: 0;
     margin-right: 0;
   }
+
   .menubar {
-    height: 10%;
-    width: 10%;
-    opacity: 1;
+    background-color: transparent;
+    margin-right: 30px;
   }
+
   .menubutton {
-    margin-top: 5px;
+    margin: 5px;
+    font-size: 60px;
   }
+
   .openmenubar {
+    margin-right: 0;
     height: 100vh;
     width: 30%;
+    background-color: #86bbd8;
+  }
+
+  #calCounter {
+    display: none;
   }
 }

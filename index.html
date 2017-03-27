@@ -6,9 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700i" rel="stylesheet">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <link rel="stylesheet" href="main.css">
 =======
   <link rel="stylesheet" href="auto.css">
+>>>>>>> master
+=======
+  <link rel="stylesheet" href="main.css">
 >>>>>>> master
   <title>calBOSS</title>
 </head>
@@ -21,6 +25,7 @@
 
   <div class="menubar">
     <p class="menubutton">&#9776;</p>
+    <div id="calCounter" class="hidden"></div>
     <nav class="nav-menu hidden">
       <li id="start">Start</li>
       <li id="stats">Stats</li>
@@ -28,16 +33,17 @@
       <li id="meals">Meal Tracker</li>
       <li id="info">More Information</li>
     </nav>
+    <div id="calCounter2" class="hidden"></div>
   </div>
 
+<div>
     <div class="startpage">
       <div class="wrapper">
       <div>
       <h1 class="title-header">calBOSS</h1>
+      <h3 class="header"> Calorie Counter / Meal Tracker</h3>
       <h3 class="header">
-       Set goals.<br>
-       Track meals.<br>
-       Be happy.</h3>
+       Set goals.Track meals.Be happy.</h3>
       <form action="#" class="setup">
         <label for="weight">Weight:</label>
         <input type="number" class="weight bar">
@@ -145,7 +151,6 @@
           <input type="text" class="js-query bar" placeholder="bacon etc..">
           <button type="submit">Search</button>
         </form>
-        <h3>Click or Press a button below</h3>
       </div>
 
       <div>
@@ -165,8 +170,7 @@
 
     
     <div id="final" class="hidden final-result"></div>
-  
-
+</div>
 </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="app.js"></script>
