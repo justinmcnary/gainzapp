@@ -21,6 +21,10 @@ video#bgvid {
     background-size: cover; 
 }
 
+label {
+  font-size: 20px;
+}
+
 button {
   cursor: pointer;
   font-size: 20px;
@@ -50,32 +54,14 @@ button {
   color: black;
 }
 
+.delete {
+  text-align: center;
+  font-size: x-large;
+}
+
 .startpage{
   color: white;
 }
-
-label {
-  font-size: 20px;
-}
-
-.animate {
-  color: white;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  height: 80%;
-  animation: pulse 5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    background-color: grey;
-  }
-  100% {
-    background-color: black;
-  }
-}
-
 
 .menubar {
   z-index: 9999;
@@ -165,11 +151,6 @@ label {
   opacity: .6;
 }
 
-.delete {
-  text-align: center;
-  font-size: x-large;
-}
-
 .box {
   flex-basis: 400px;
   flex-grow: 1;
@@ -182,6 +163,7 @@ label {
   background-color: gray;
   opacity: .8;
 }
+
 
 .food-search {
   text-align: center;
@@ -204,6 +186,24 @@ label {
     -moz-transition: all 0.7s ease 0s;
     -o-transition: all 0.7s ease 0s;
     transition: all 0.7s ease 0s;
+}
+
+.animate {
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: black;
+  }
 }
 
 @media all and (max-width:800px) {
