@@ -1,6 +1,17 @@
+//*API key information*//
 const appID = '5ff9d9d1';
 const appKey = '8a580ee40ddee9e24cc9c02664aced07';
 
+//*Nutritionix API get request*//
+function getFoodFromApi(query){
+  $.getJSON(`https://api.nutritionix.com/v1_1/search/${query}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5ff9d9d1&appKey=8a580ee40ddee9e24cc9c02664aced07`, (d)=>{
+    state.searchItems = d.hits;
+    displayResults();
+  });
+
+};
+
+//*State information*//
 const state = {
   weight: 0,
   sex: "",
@@ -15,14 +26,7 @@ const state = {
 }
 
 
-function getFoodFromApi(query){
-  $.getJSON(`https://api.nutritionix.com/v1_1/search/${query}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5ff9d9d1&appKey=8a580ee40ddee9e24cc9c02664aced07`, (d)=>{
-    state.searchItems = d.hits;
-    displayResults();
-  });
-
-};
-
+//*State modifications and calculator functions*//
 const addItem = function(state, itemName, cal) {
   let itemObj = {itemName, cal};
   state.storedItems.push(itemObj);
@@ -85,6 +89,12 @@ const userInputs = function(weight, sex, goal) {
   displayUserCal();
 }
 
+const calculateCalIntake = function(cal) {
+  console.log(cal);
+  state.todaysCalIntake = state.todaysCalIntake + cal;
+}
+
+//*Render functions*//
 const displayUserCal = function() {
   let goalPercent = state.goal/state.todaysCalIntakeTotal;
   $('.js-user').html("");
@@ -101,12 +111,15 @@ const displayUserCal = function() {
   )
 }
 
+<<<<<<< HEAD
 
 const calculateCalIntake = function(cal) {
   console.log(cal);
   state.todaysCalIntake = state.todaysCalIntake + cal;
 }
 
+=======
+>>>>>>> master
 const displayTodaysMenu = function() {
   $('.js-todays-meals').html("");
   state.storedItems.map(function(item) {
@@ -135,12 +148,6 @@ const displayResults = function() {
   });
 }
 
-const goalWatch = function() {
-  if ( state.todaysCalIntakeTotal >= state.goal) {
-    displayFinal();
-  }
-}
-
 const displayFinal = function() {
   $('.final-result').html("");
   $('.final-result').removeClass('hidden');
@@ -153,6 +160,13 @@ const displayFinal = function() {
   $(x).appendTo('.final-result').addClass('animate');
 }
 
+const goalWatch = function() {
+  if ( state.todaysCalIntakeTotal >= state.goal) {
+    displayFinal();
+  }
+}
+
+//*Event Listners*//
 function watchSubmit() {
   $('.js-search-form').submit(function(e) {
     e.preventDefault();
@@ -200,10 +214,15 @@ $('.startpage').on('click', 'button.next', function(event){
 $('.menubar').on('click', 'p', function(event){
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
   displayTodaysMenu();
 })
 
+
+//*Navigation Menu functions*//
 $('.nav-menu').on('click', '#start', function(event){
   $('.intro').addClass('hidden');
   $('.main').addClass('hidden');
@@ -212,7 +231,10 @@ $('.nav-menu').on('click', '#start', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
 })
 $('.nav-menu').on('click', '#info', function(event){
   $('.main').addClass('hidden');
@@ -222,7 +244,10 @@ $('.nav-menu').on('click', '#info', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
 })
 $('.nav-menu').on('click', '#main', function(event){
   $('.main').removeClass('hidden');
@@ -232,7 +257,10 @@ $('.nav-menu').on('click', '#main', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
 })
 $('.nav-menu').on('click', '#meals', function(event){
   $('.meals').removeClass('hidden');
@@ -242,7 +270,10 @@ $('.nav-menu').on('click', '#meals', function(event){
   $('.js-user').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
 })
 $('.nav-menu').on('click', '#stats', function(event){
   $('.js-user').removeClass('hidden');
@@ -252,9 +283,13 @@ $('.nav-menu').on('click', '#stats', function(event){
   $('.intro').addClass('hidden');
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
+<<<<<<< HEAD
   $('.user-stats').toggleClass('hidden');
+=======
+>>>>>>> master
 })
 
+//*State Reset*//
 $('.final-result').on('click', 'button.reset', function(event){
   state.weight= 0;
   state.sex = "";
