@@ -50,10 +50,6 @@ button {
   opacity: .8;
 }
 
-.reset {
-  color: black;
-}
-
 .delete {
   text-align: center;
   font-size: x-large;
@@ -204,6 +200,10 @@ button {
   100% {
     background-color: black;
   }
+}
+
+.reset {
+  color: black;
 }
 
 @media all and (max-width:800px) {

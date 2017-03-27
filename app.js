@@ -1,14 +1,9 @@
-//*API key information*//
-const appID = '5ff9d9d1';
-const appKey = '8a580ee40ddee9e24cc9c02664aced07';
-
 //*Nutritionix API get request*//
 function getFoodFromApi(query){
   $.getJSON(`https://api.nutritionix.com/v1_1/search/${query}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5ff9d9d1&appKey=8a580ee40ddee9e24cc9c02664aced07`, (d)=>{
     state.searchItems = d.hits;
     displayResults();
   });
-
 };
 
 //*State information*//
@@ -41,8 +36,8 @@ const calculateCal = function(state){
   }
 }
 
-const removeItem = function(state, iRemoving) {
-  let normalizeRemoving = iRemoving.trim().toLowerCase();
+const removeItem = function(state, itemToRemove) {
+  let normalizeRemoving = itemToRemove.trim().toLowerCase();
   state.storedItems.map(function(item, i){
     let normalizeName = item.itemName.trim().toLowerCase();
     if(normalizeName === normalizeRemoving){
@@ -128,7 +123,7 @@ const displayResults = function() {
   state.searchItems.map(function(item) {
   let items = item.fields;
   $('.js-search-results').append(
-    `<div class= "itemBar">
+    ` <div class= "itemBar">
       <button class="select box">
         <h2 class= "title"> ${items.brand_name} ${items.item_name}</h2>
         <p class= "calories"> Calories: ${items.nf_calories} </p>
@@ -144,11 +139,11 @@ const displayFinal = function() {
   $('.final-result').removeClass('hidden');
   $('.main').addClass('hidden');
   $('.final-result').html("");
-  let x = `<h1>You have reached todays Goal!</h1>
+  let finalResultMesg = `<h1>You have reached todays Goal!</h1>
       <h2>Todays Calories: ${state.todaysCalIntakeTotal}</h2>
       <h2>Todays Goal: ${state.goal}</h2>
       <button class= "reset">Reset</button>`
-  $(x).appendTo('.final-result').addClass('animate');
+  $(finalResultMesg).appendTo('.final-result').addClass('animate');
 }
 
 const goalWatch = function() {
