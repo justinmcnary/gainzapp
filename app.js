@@ -90,8 +90,15 @@ const calculateCalIntake = function(cal) {
 }
 
 //*Render functions*//
+const displayCalCounter = function() {
+  $('#calCounter').removeClass('hidden');
+  $('#calCounter').html("");
+  $('#calCounter').append(
+    `<p>G:${state.goal}<br>
+     Cal:${state.todaysCalIntakeTotal}</p>`);
+}
+
 const displayUserCal = function() {
-  let goalPercent = state.goal/state.todaysCalIntakeTotal;
   $('.js-user').html("");
   $('.js-user').append(
     `<h1 class="header">User Stats:</h1>
@@ -167,6 +174,7 @@ function watchSubmit() {
     let sex = $('input[name=gender]:checked').val();
     let goal = $('input[name=goal]:checked').val();
     userInputs(weight, sex, goal);
+    displayCalCounter();
   });
 
 $('.js-search-results').on('click','.select', function(){
@@ -178,6 +186,7 @@ $('.js-search-results').on('click','.select', function(){
   displayTodaysMenu();
   displayUserCal();
   goalWatch();
+  displayCalCounter();
 });
 
 $('div.js-todays-meals').on('click', 'button.delete', function(event){
@@ -189,18 +198,25 @@ $('div.js-todays-meals').on('click', 'button.delete', function(event){
   calculateCal(state);
   displayTodaysMenu();
   displayUserCal();
+  displayCalCounter();
 });
 
 $('.startpage').on('click', 'button.next', function(event){
   $('.main').removeClass('hidden');
   $('.startpage').addClass('hidden');
   $('.js-search-results').html("");
+  displayCalCounter();
 });
 
 $('.menubar').on('click', 'p', function(event){
   $('.menubar').toggleClass('openmenubar');
   $('.nav-menu').toggleClass('hidden');
-  displayTodaysMenu();
+  $('#calCounter').toggleClass('hidden');
+  $('#calCounter2').toggleClass('hidden');
+  $('#calCounter2').html("");
+  $('#calCounter2').append(
+    `<p>G:${state.goal}<br>
+     Cal:${state.todaysCalIntakeTotal}</p>`);
 })
 
 
