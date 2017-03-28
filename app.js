@@ -126,6 +126,10 @@ const displayTodaysMenu = function() {
 }
 
 const displayResults = function() {
+  $('.search-result-header').html("");
+  $('.search-result-header').append(
+    `<h4 class="header">Click the corresponding food to add it to your daily caloric total. Meals can be edited under the meal tracker in the menu.</h4>`
+  );
   $('.js-search-results').html("");
   state.searchItems.map(function(item) {
   let items = item.fields;

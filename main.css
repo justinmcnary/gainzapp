@@ -20,7 +20,7 @@ video#bgvid {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(Shoes-Stories.jpg) no-repeat;
+    background: url(BnW.jpg) no-repeat;
     background-size: cover; 
 }
 
@@ -31,8 +31,16 @@ label {
 button {
   cursor: pointer;
   font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
+input {
+  font-family: 'Roboto', sans-serif;
+}
+
+.weight-bar {
+  text-align: center;
+}
 
 .setup{
   text-align: center;
@@ -49,12 +57,12 @@ button {
 
 .next{
   margin-top: 20px;
-  font-size: 60px;
+  margin-bottom: 10px;
+  font-size: 40px;
   font-family: 'Roboto', sans-serif;
-  background-color: #86bbd8;
   color: white; 
   border: solid 3px white;
-  opacity: .8;
+  background-color: #bcbbd8;
 }
 
 .delete {
@@ -69,7 +77,7 @@ button {
 .menubar {
   z-index: 9999;
   background-color: #86bbd8;
-  opacity: .8;
+  opacity: .9;
   color: white;
   position: fixed;
   top: 0;
@@ -122,12 +130,19 @@ button {
   font-weight: bold;
   font-size: 80px;
   margin-bottom: 5px;
+  padding: 10px;
+  background: black;
+  color: #86bbd8;
 }
 
 .header {
   text-align: center;
   font-weight: bold;
   color: white;
+}
+
+.search-result-header {
+  background: black;
 }
 
 .hidden {
@@ -152,9 +167,9 @@ button {
 .long-text {
   text-align: left;
   margin: 10px;
-  background-color: #9ed886;
-  opacity: .8;
+  color: white;
   padding: 20px;
+  background: black;
 }
 
 .mealBar {
@@ -190,16 +205,16 @@ button {
 
 .bar {
     border: 1px solid #d1d1d1;
-    text-align: left;
+    text-align: center;
     font: bold 20px;
     font-size: 20px;
-    color: #86bbd8;
+    color: black;
     width: 150px;
     /*padding: 1px 15px 6px 35px;*/
     padding: 6px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
@@ -211,7 +226,7 @@ button {
 }
 
 .animate {
-  color: white;
+  color: black;
   text-align: center;
   padding: 20px;
   width: 100%;
@@ -221,21 +236,17 @@ button {
 
 @keyframes pulse {
   0% {
-    background-color: grey;
-  }
-  100% {
     background-color: #86bbd8;
   }
-}
-
-.reset {
-  color: black;
+  100% {
+    background-color: white;
+  }
 }
 
 @media all and (max-width:800px) {
     html {
-          /*background: url(Shoes-Stories.jpg) #000 center center fixed;*/
-          background-color: lightgray;
+          background: url(BnW.jpg) #000 center center fixed;
+          /*background-color: black;*/
       }
       #bgvid {
           display: none;
@@ -245,17 +256,15 @@ button {
   padding: 10px;
 }
 
-
-  .long-text {
-    background-color: transparent;
-    color: black;
-  }
+body {
+  margin-right: 0;
+}
 
   .text{
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .box {
     width: 100%;
     text-align: center;
@@ -273,11 +282,13 @@ button {
   .menubar {
     background-color: transparent;
     margin-right: 30px;
+    opacity: 1;
   }
 
   .menubutton {
     margin: 5px;
     font-size: 60px;
+    color: white;
   }
 
   .openmenubar {
@@ -289,5 +300,9 @@ button {
 
   #calCounter {
     display: none;
+  }
+
+  .header {
+    margin-right: 10px;
   }
 }
